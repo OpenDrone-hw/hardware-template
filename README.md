@@ -38,15 +38,15 @@ roadmap, never described here in prose.>
 
 https://opendrone.be
 
-## Design and contributing
+## Contributing
 
-The full design description, the part list and the layout constraints are in
-[AGENTS.md](AGENTS.md). It is written for people and for coding agents.
+Issues and pull requests are welcome on any repo. KiCad files cannot be merged,
+so say what you intend to change before you do, on
+[Discord](https://discord.gg/v3sWmTcx3R).
 
-How to report a problem, claim a board and get a change merged:
+The design itself, the part list and the layout constraints are in
+[AGENTS.md](AGENTS.md). How everything works:
 [CONTRIBUTING.md](CONTRIBUTING.md).
-
-Questions and board claims go to the Discord: https://discord.gg/v3sWmTcx3R
 
 ## Firmware
 
