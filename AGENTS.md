@@ -24,14 +24,13 @@ ICs. What it is not, if a reader would otherwise assume it.>
 | Root schematic | `hardware/<name>.kicad_sch` <plus sub-sheets, listed> |
 | Board | `hardware/<name>.kicad_pcb`, <N> layers, <stackup> |
 | Local library | `hardware/lib.kicad_sym`, `hardware/lib.pretty/`, `hardware/lib.3dshapes/`, nickname `lib` |
-| Shared library | [OpenDrone-hw/KiCad-Library](https://github.com/OpenDrone-hw/KiCad-Library), catalogue only; every library this board uses is local to the repo |
+| Shared library | `hardware/KiCad-Library/`, submodule of [OpenDrone-hw/KiCad-Library](https://github.com/OpenDrone-hw/KiCad-Library), nickname `OpenDrone`, resolved through the project text variable `OPENDRONE_LIB` |
 | Design rules | `hardware/<name>.kicad_dru`, canonical block plus <board-specific rules, or none> |
 | Fab config | `hardware/fabrication-toolkit-options.json` |
-| Board setup | Line standard: 6 layers, 0.09 mm clearance and track, via 0.35 on 0.20 drill |
+| Board setup | Standard: 6 layers, 0.09 mm clearance and track, via 0.35 on 0.20 drill |
 | License | CERN-OHL-S-2.0 |
 
-<!-- Mechanical repos: replace the KiCad rows with the CAD tool and, where
-     Onshape is the master, a link to the document. -->
+<!-- Mechanical repos: replace the KiCad rows with the CAD tool -->
 
 ## Rules
 
@@ -46,12 +45,13 @@ Identical in every OpenDrone board repo. Do not edit here; edit the template.
   value that changes the circuit.
 - **Close KiCad before any write to a KiCad file.** KiCad caches library tables
   at process start and overwrites files on save.
-- **Reuse before you draw.** Check
-  [KiCad-Library](https://github.com/OpenDrone-hw/KiCad-Library) and its
+- **Reuse before you draw.** Check the `OpenDrone` library and its
   `PARTS-USED.md` first. If the part is there we have already sourced,
-  footprinted and shipped it: copy the symbol and footprint into this repo's
-  `lib` library and use it. Draw a new part only when the library has nothing
-  that fits, and import it with `easyeda2kicad` from its LCSC number.
+  footprinted and shipped it: place it from `OpenDrone`. Draw a new part into
+  `lib` only when the catalogue has nothing that fits, imported with
+  `easyeda2kicad` from its LCSC number. Pulling a newer catalogue is a
+  deliberate, reviewed commit: `git submodule update --remote
+  hardware/KiCad-Library`, then DRC.
 - **One person holds a board layout at a time.** KiCad files do not merge. Say
   on Discord that you are taking it. See [CONTRIBUTING.md](CONTRIBUTING.md).
 - **ERC and DRC clean before every pull request.** Commands below.
