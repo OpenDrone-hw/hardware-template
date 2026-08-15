@@ -24,14 +24,13 @@ ICs. What it is not, if a reader would otherwise assume it.>
 | Root schematic | `hardware/<name>.kicad_sch` <plus sub-sheets, listed> |
 | Board | `hardware/<name>.kicad_pcb`, <N> layers, <stackup> |
 | Local library | `hardware/lib.kicad_sym`, `hardware/lib.pretty/`, `hardware/lib.3dshapes/`, nickname `lib` |
-| Shared library | [OpenDrone-hw/KiCad-Library](https://github.com/OpenDrone-hw/KiCad-Library), catalogue only; every library this board uses is local to the repo |
+| Shared library | [OpenDrone-hw/KiCad-Library](https://github.com/OpenDrone-hw/KiCad-Library) |
 | Design rules | `hardware/<name>.kicad_dru`, canonical block plus <board-specific rules, or none> |
 | Fab config | `hardware/fabrication-toolkit-options.json` |
-| Board setup | Line standard: 6 layers, 0.09 mm clearance and track, via 0.35 on 0.20 drill |
+| Board setup | Standard: 6 layers, 0.09 mm clearance and track, via 0.35 on 0.20 drill |
 | License | CERN-OHL-S-2.0 |
 
-<!-- Mechanical repos: replace the KiCad rows with the CAD tool and, where
-     Onshape is the master, a link to the document. -->
+<!-- Mechanical repos: replace the KiCad rows with the CAD tool -->
 
 ## Rules
 
