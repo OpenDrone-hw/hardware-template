@@ -10,7 +10,7 @@ Replace in bracket things [with your project] and remove this.
 </p>
 ]
 
-[![Status](https://img.shields.io/badge/status-[status]-e08c00)](https://github.com/OpenDrone-hw/.github/blob/main/CONTRIBUTING.md#the-life-of-a-project)
+[![Status](https://img.shields.io/endpoint?url=https://opendrone.be/api/status/[repo].json)](https://github.com/OpenDrone-hw/.github/blob/main/CONTRIBUTING.md#the-life-of-a-project)
 [![Shop](https://img.shields.io/badge/shop-opendrone.be-ffb700)](https://opendrone.be/products/[product])
 [![Discord](https://img.shields.io/badge/Discord-%23esc-5865F2?logo=discord&logoColor=white)](https://discord.com/channels/[product specific channel hash])
 [![Video](https://img.shields.io/badge/YouTube-How%20Drone%20ESCs%20Work-FF0000?logo=youtube&logoColor=white)](https://www.youtube.com/watch?[product video link])
@@ -19,6 +19,10 @@ Replace in bracket things [with your project] and remove this.
 Maintained by [@[maintainer]](https://github.com/[maintainer]).
 
 ## Specifications
+
+[This table is machine-read: opendrone.be imports the first two-column table
+under this heading onto the product page. Plain ASCII, one fact per row, keep
+the heading name.]
 
 | | |
 |---|---|
