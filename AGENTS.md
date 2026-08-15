@@ -1,6 +1,8 @@
 <!-- This file fills in as the board gets drawn. It ships mostly empty and that
-     is fine: a planned repo has a written Repo table and nothing else, and the
-     rest lands as the design settles. Do not save it all for the end.
+     is fine. A planned repo does not carry it at all (README is the write-up
+     until a design exists); it comes back from the template when someone
+     claims the board, with the Repo table filled and the rest landing as the
+     design settles. Do not save it all for the end.
 
      Keep the section order identical in every OpenDrone repo, so a reader and an
      agent find the same thing in the same place anywhere. Delete a section that
