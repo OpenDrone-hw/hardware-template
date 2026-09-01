@@ -24,7 +24,7 @@ ICs. What it is not, if a reader would otherwise assume it.>
 | Root schematic | `hardware/<name>.kicad_sch` <plus sub-sheets, listed> |
 | Board | `hardware/<name>.kicad_pcb`, <N> layers, <stackup> |
 | Local library | `hardware/lib.kicad_sym`, `hardware/lib.pretty/`, `hardware/lib.3dshapes/`, nickname `lib` |
-| Shared library | `hardware/KiCad-Library/`, submodule of [OpenDrone-hw/KiCad-Library](https://github.com/OpenDrone-hw/KiCad-Library), nickname `OpenDrone`, resolved through the project text variable `OPENDRONE_LIB` |
+| Shared library | `hardware/KiCad-Library/`, submodule of [OpenDrone-hw/KiCad-Library](https://github.com/OpenDrone-hw/KiCad-Library), nickname `OpenDrone`; 3D models and exact component datasheets resolve through the project text variable `OPENDRONE_LIB` |
 | Design rules | `hardware/<name>.kicad_dru`, canonical block plus <board-specific rules, or none> |
 | Fab config | `hardware/fabrication-toolkit-options.json` |
 | Board setup | Standard: 6 layers, 0.09 mm clearance and track, via 0.35 on 0.20 drill |
@@ -47,8 +47,9 @@ Identical in every OpenDrone board repo. Do not edit here; edit the template.
   at process start and overwrites files on save.
 - **Reuse before you draw.** Check the `OpenDrone` library and its
   `PARTS-USED.md` first. If the part is there we have already sourced,
-  footprinted and shipped it: place it from `OpenDrone`. Draw a new part into
-  `lib` only when the catalogue has nothing that fits, imported with
+  footprinted and shipped it, and its symbol links to the exact committed
+  datasheet: place it from `OpenDrone`. Draw a new part into `lib` only when
+  the catalogue has nothing that fits, imported with
   `easyeda2kicad` from its LCSC number. Pulling a newer catalogue is a
   deliberate, reviewed commit: `git submodule update --remote
   hardware/KiCad-Library`, then DRC.
