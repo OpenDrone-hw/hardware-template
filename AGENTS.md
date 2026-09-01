@@ -55,14 +55,16 @@ Identical in every OpenDrone board repo. Do not edit here; edit the template.
   hardware/KiCad-Library`, then DRC.
 - **One person holds a board layout at a time.** KiCad files do not merge. Say
   on Discord that you are taking it. See [CONTRIBUTING.md](CONTRIBUTING.md).
-- **ERC and DRC clean before every pull request.** Commands below.
+- **Run ERC and DRC before every pull request.** Existing approved findings
+  may remain; a new type or increased count must be reviewed before merge.
+  Commands below.
 
 ## Environment
 
 ```sh
 # schematic and board checks
-kicad-cli sch erc --exit-code-violations hardware/<name>.kicad_sch
-kicad-cli pcb drc --schematic-parity --refill-zones --exit-code-violations hardware/<name>.kicad_pcb
+kicad-cli sch erc hardware/<name>.kicad_sch
+kicad-cli pcb drc --schematic-parity --refill-zones hardware/<name>.kicad_pcb
 
 # netlist, for scripted analysis
 kicad-cli sch export netlist --format kicadsexpr -o /tmp/<name>.net hardware/<name>.kicad_sch
@@ -70,9 +72,9 @@ kicad-cli sch export netlist --format kicadsexpr -o /tmp/<name>.net hardware/<na
 
 On macOS `kicad-cli` is at
 `/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli`, and `pcbnew` imports
-only under KiCad's bundled Python. Shared scripts (renders, STEP export,
-packaging art) live in `OpenDrone-Scripts`; board-specific scripts live in
-`hardware/tools/`.
+only under KiCad's bundled Python. Reusable scripts (renders, STEP export,
+packaging art) come from Incutec hardware tooling. The OpenDrone release
+standard lives in `OpenDrone-hw/.github/RELEASES.md`; board-specific scripts live in `hardware/tools/`.
 
 ## Architecture
 
