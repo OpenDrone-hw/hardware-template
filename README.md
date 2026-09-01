@@ -23,8 +23,8 @@ pairs with.]
 [![OSHWA](https://img.shields.io/badge/OSHWA-BE000029-0099b0)](https://certification.oshwa.org/[OSHWA ID].html)
 ]
 
-[Planned: "Nobody holds this board yet: claim it on Discord." Then:]
-Maintained by [@[maintainer]](https://github.com/[maintainer]).
+[Do not put ownership, active branch, or assignment state in the README. Use
+the repository's live project surfaces when that information is needed.]
 
 ## Why
 
@@ -62,11 +62,11 @@ assembly), cost ceiling. One bullet each.]
 [Planned. Existing boards, teardowns, reference designs and what to take or
 avoid from each. Link, one line each. Longer notes go in `research/`.]
 
-## Open questions
+## Design questions
 
-[Planned. The decisions still being argued on Discord, one bullet each. Delete
-a bullet when it is decided and move the answer up into Constraints or
-Specifications.]
+[Planned. Durable decisions that must be resolved during user-requested design
+work, one bullet each. Delete a bullet when it is decided and move the answer
+up into Constraints or Specifications.]
 
 ## In the line
 

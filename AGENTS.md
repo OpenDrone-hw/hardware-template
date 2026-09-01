@@ -1,8 +1,6 @@
-<!-- This file fills in as the board gets drawn. It ships mostly empty and that
-     is fine. A planned repo does not carry it at all (README is the write-up
-     until a design exists); it comes back from the template when someone
-     claims the board, with the Repo table filled and the rest landing as the
-     design settles. Do not save it all for the end.
+<!-- Keep this one-view brief at every project stage. Fill it from verified
+     repository facts as the design develops; omit sections that do not yet
+     apply instead of adding plans or placeholders.
 
      Keep the section order identical in every OpenDrone repo, so a reader and an
      agent find the same thing in the same place anywhere. Delete a section that
@@ -19,7 +17,7 @@ ICs. What it is not, if a reader would otherwise assume it.>
 
 | | |
 |---|---|
-| Maintainer | <@handle, who holds this board> |
+| Maintainer | <GitHub team or handle> |
 | Status | See the `status-*` topic on the repo. Never written here. |
 | Designed in | KiCad 10 |
 | KiCad project | `hardware/<name>.kicad_pro` |
