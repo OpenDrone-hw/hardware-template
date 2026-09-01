@@ -32,6 +32,25 @@ ICs. What it is not, if a reader would otherwise assume it.>
 
 <!-- Mechanical repos: replace the KiCad rows with the CAD tool -->
 
+## Parts and datasheets
+
+- **Per-repository part index:** the root schematic and its listed sub-sheets
+  are authoritative for what this board fits. Export the netlist with the
+  command below when a script-readable board index is needed; do not maintain
+  a second hand-written BOM.
+- **Proven shared parts:**
+  `hardware/KiCad-Library/PARTS-USED.md` is the catalogue index. Its `Boards`
+  column identifies every repository using each LCSC part; filter that column
+  for `<Board>` to get this repository's proven shared-part view.
+- **Exact datasheets:**
+  `hardware/KiCad-Library/datasheet/manifest.json` maps shared symbols to the
+  committed PDFs and their SHA-256 hashes. The PDFs live in
+  `hardware/KiCad-Library/datasheet/`, and symbol links resolve there through
+  `OPENDRONE_LIB`.
+- **Local-only parts:** inspect `hardware/lib.kicad_sym`,
+  `hardware/lib.pretty/`, and `hardware/lib.3dshapes/`, then verify supplier
+  fields in the board schematic. Do not duplicate a shared part or datasheet.
+
 ## Rules
 
 Identical in every OpenDrone board repo. Do not edit here; edit the template.
@@ -72,9 +91,9 @@ kicad-cli sch export netlist --format kicadsexpr -o /tmp/<name>.net hardware/<na
 
 On macOS `kicad-cli` is at
 `/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli`, and `pcbnew` imports
-only under KiCad's bundled Python. Reusable scripts (renders, STEP export,
-packaging art) come from Incutec hardware tooling. The OpenDrone release
-standard lives in `OpenDrone-hw/.github/RELEASES.md`; board-specific scripts live in `hardware/tools/`.
+only under KiCad's bundled Python. The OpenDrone release standard is
+[RELEASES.md](https://github.com/OpenDrone-hw/.github/blob/main/RELEASES.md);
+board-specific scripts live in `hardware/tools/`.
 
 ## Architecture
 
