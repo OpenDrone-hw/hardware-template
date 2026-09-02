@@ -91,9 +91,11 @@ kicad-cli sch export netlist --format kicadsexpr -o /tmp/<name>.net hardware/<na
 
 On macOS `kicad-cli` is at
 `/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli`, and `pcbnew` imports
-only under KiCad's bundled Python. The OpenDrone release standard is
-[RELEASES.md](https://github.com/OpenDrone-hw/.github/blob/main/RELEASES.md);
-board-specific scripts live in `hardware/tools/`.
+only under KiCad's bundled Python. Reusable scripts for renders, STEP export,
+and packaging art come from Incutec hardware tooling. The OpenDrone release
+standard is
+[RELEASES.md](https://github.com/OpenDrone-hw/.github/blob/main/RELEASES.md).
+Board-specific scripts, where a board has any, live in `hardware/tools/`.
 
 ## Architecture
 
