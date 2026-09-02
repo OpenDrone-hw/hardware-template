@@ -13,6 +13,46 @@
 <What the board is, in three sentences at most. Topology and the load-bearing
 ICs. What it is not, if a reader would otherwise assume it.>
 
+## Architecture
+
+<The signal and power chain, block by block, in prose. Roughly ten lines. Say
+why, not just what: the parts of the design a reader could not infer from the
+schematic. Sub-sheet names in backticks so a reader can open the right one.>
+
+## Power
+
+```
+<ASCII tree: source, each regulator with its part and output, and what each
+rail feeds. One block, no prose.>
+```
+
+## Key parts
+
+| Function | Ref | Part | LCSC | Note |
+|---|---|---|---|---|
+| <MCU> | U1 | | | |
+| | | | | |
+
+## Connectors and I/O
+
+| Connector | Ref | Part | Function |
+|---|---|---|---|
+| | | | |
+
+<Pinout table or pin map, only where the pinout is not visible from the
+schematic sheet name.>
+
+## Layout rules
+
+<Only constraints a future editor would break by accident: keep-outs, RF
+clearances, thermal copper, differential pairs, antenna keepouts, current paths
+that must stay short. Delete the section if the board has none.>
+
+## Firmware
+
+<Which firmware, which target, how it gets on the board the first time. Link
+upstream. Do not restate upstream documentation.>
+
 ## Repo
 
 | | |
@@ -51,6 +91,25 @@ ICs. What it is not, if a reader would otherwise assume it.>
   `hardware/lib.pretty/`, and `hardware/lib.3dshapes/`, then verify supplier
   fields in the board schematic. Do not duplicate a shared part or datasheet.
 
+## Environment
+
+```sh
+# schematic and board checks
+kicad-cli sch erc hardware/<name>.kicad_sch
+kicad-cli pcb drc --schematic-parity --refill-zones hardware/<name>.kicad_pcb
+
+# netlist, for scripted analysis
+kicad-cli sch export netlist --format kicadsexpr -o /tmp/<name>.net hardware/<name>.kicad_sch
+```
+
+On macOS `kicad-cli` is at
+`/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli`, and `pcbnew` imports
+only under KiCad's bundled Python. Reusable scripts for renders, STEP export,
+and packaging art come from Incutec hardware tooling. The OpenDrone release
+standard is
+[RELEASES.md](https://github.com/OpenDrone-hw/.github/blob/main/RELEASES.md).
+Board-specific scripts, where a board has any, live in `hardware/tools/`.
+
 ## Rules
 
 Identical in every OpenDrone board repo. Do not edit here; edit the template.
@@ -76,66 +135,7 @@ Identical in every OpenDrone board repo. Do not edit here; edit the template.
   on Discord that you are taking it. See [CONTRIBUTING.md](CONTRIBUTING.md).
 - **Run ERC and DRC before every pull request.** Existing approved findings
   may remain; a new type or increased count must be reviewed before merge.
-  Commands below.
-
-## Environment
-
-```sh
-# schematic and board checks
-kicad-cli sch erc hardware/<name>.kicad_sch
-kicad-cli pcb drc --schematic-parity --refill-zones hardware/<name>.kicad_pcb
-
-# netlist, for scripted analysis
-kicad-cli sch export netlist --format kicadsexpr -o /tmp/<name>.net hardware/<name>.kicad_sch
-```
-
-On macOS `kicad-cli` is at
-`/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli`, and `pcbnew` imports
-only under KiCad's bundled Python. Reusable scripts for renders, STEP export,
-and packaging art come from Incutec hardware tooling. The OpenDrone release
-standard is
-[RELEASES.md](https://github.com/OpenDrone-hw/.github/blob/main/RELEASES.md).
-Board-specific scripts, where a board has any, live in `hardware/tools/`.
-
-## Architecture
-
-<The signal and power chain, block by block, in prose. Roughly ten lines. Say
-why, not just what: the parts of the design a reader could not infer from the
-schematic. Sub-sheet names in backticks so a reader can open the right one.>
-
-## Key parts
-
-| Function | Ref | Part | LCSC | Note |
-|---|---|---|---|---|
-| <MCU> | U1 | | | |
-| | | | | |
-
-## Power
-
-```
-<ASCII tree: source, each regulator with its part and output, and what each
-rail feeds. One block, no prose.>
-```
-
-## Connectors and I/O
-
-| Connector | Ref | Part | Function |
-|---|---|---|---|
-| | | | |
-
-<Pinout table or pin map, only where the pinout is not visible from the
-schematic sheet name.>
-
-## Firmware
-
-<Which firmware, which target, how it gets on the board the first time. Link
-upstream. Do not restate upstream documentation.>
-
-## Layout rules
-
-<Only constraints a future editor would break by accident: keep-outs, RF
-clearances, thermal copper, differential pairs, antenna keepouts, current paths
-that must stay short. Delete the section if the board has none.>
+  Commands are in Environment above.
 
 ## Revisions
 
