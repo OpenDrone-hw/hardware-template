@@ -72,6 +72,8 @@ upstream. Do not restate upstream documentation.>
 
 <!-- Mechanical repos: replace the KiCad rows with the CAD tool -->
 
+A repository holds design files only. Sourcing (suppliers, prices, quotes, RFQs, contacts) is handled by Incutec and never lives in OpenDrone repositories.
+
 ## Parts and datasheets
 
 - **Per-repository part index:** the root schematic and its listed sub-sheets

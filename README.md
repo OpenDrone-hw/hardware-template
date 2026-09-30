@@ -77,6 +77,8 @@ What pairs with what, and what is available:
 
 See [CONTRIBUTING.md](CONTRIBUTING.md).
 
+A repository holds design files only. Sourcing (suppliers, prices, quotes, RFQs, contacts) is handled by Incutec and never lives in OpenDrone repositories.
+
 ## License
 
 Hardware licensed under [CERN-OHL-S-2.0](https://ohwr.org/cern_ohl_s_v2.txt),
