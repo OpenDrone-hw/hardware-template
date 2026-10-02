@@ -1,7 +1,12 @@
+**Template.** This is the README for a new OpenDrone hardware repository.
+Square-bracket text, the images and the badges below are placeholders: they do
+not resolve until a project fills them in.
+
 [Every repo starts planned and this README grows with it. Fill the brackets,
-keep the section order, delete this line. Sections marked "planned" go when
+keep the section order, delete this line and the Template note above. Sections marked "planned" go when
 the board reaches alpha: by then AGENTS.md carries the design and the renders
-and the shop badge take their place.]
+and the shop badge take their place. Replace `images/front.png` and
+`images/back.png` with the board renders.]
 
 # [project name]
 
@@ -10,8 +15,8 @@ pairs with.]
 
 [Renders, from alpha on:
 <p>
-<img src="images/front.png" width="400" alt="" />
-<img src="images/back.png" width="400" alt="" />
+<img src="images/front.png" width="400" alt="Front render placeholder" />
+<img src="images/back.png" width="400" alt="Back render placeholder" />
 </p>
 ]
 
@@ -64,8 +69,7 @@ avoid from each. Link, one line each. Longer notes go in `research/`.]
 
 ## Design questions
 
-[Planned. Durable decisions that must be resolved during user-requested design
-work, one bullet each. Delete a bullet when it is decided and move the answer
+[Planned. Durable decisions the design still has to make, one bullet each. Delete a bullet when it is decided and move the answer
 up into Constraints or Specifications.]
 
 ## In the line
