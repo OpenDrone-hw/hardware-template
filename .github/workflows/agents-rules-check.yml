@@ -1,0 +1,48 @@
+# Reusable check: the "## Rules" section of the calling repository's AGENTS.md
+# must match the one in OpenDrone-hw/hardware-template, byte for byte.
+# Boards call it from .github/workflows/agents-rules.yml. To change the rules,
+# edit the template, then copy the section into every board.
+name: AGENTS.md Rules check
+
+on:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  rules:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: board
+      - uses: actions/checkout@v4
+        with:
+          repository: OpenDrone-hw/hardware-template
+          path: template
+          sparse-checkout: AGENTS.md
+          sparse-checkout-cone-mode: false
+      - name: Compare the Rules section with the template
+        run: |
+          python3 - <<'PY'
+          import difflib, re, sys
+          from pathlib import Path
+
+          def rules(path):
+              text = Path(path).read_text(encoding="utf-8")
+              m = re.search(r"^## Rules[ \t]*$", text, re.MULTILINE)
+              if m is None:
+                  sys.exit(f"{path}: no '## Rules' section")
+              n = re.compile(r"^## ", re.MULTILINE).search(text, m.end())
+              return text[m.end():n.start() if n else len(text)]
+
+          want = rules("template/AGENTS.md")
+          have = rules("board/AGENTS.md")
+          if have != want:
+              sys.stdout.writelines(difflib.unified_diff(
+                  have.splitlines(True), want.splitlines(True),
+                  "board/AGENTS.md", "template/AGENTS.md"))
+              sys.exit("The Rules section differs from the template. Copy it from OpenDrone-hw/hardware-template.")
+          print("Rules section matches the template.")
+          PY
