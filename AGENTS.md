@@ -6,7 +6,14 @@
      agent find the same thing in the same place anywhere. Delete a section that
      does not apply rather than leaving it empty. Target 150 lines: if a section
      grows past a screen, the detail belongs in the schematic, not here. State
-     current fact only. No plans, no TODOs, no history outside Revisions. -->
+     current fact only. No plans, no TODOs, no history outside Revisions.
+
+     KiCad boards only: Environment, Parts and datasheets, Rules and By task
+     assume KiCad. A mechanical or documentation-only repository (frame, motor,
+     no .kicad_pro) does not carry the Rules section: it starts from the
+     mechanical-repository template in the hardware-tooling repository, and
+     the monthly agent-file audit lists it as excluded and flags a stray Rules
+     section there. -->
 
 # <Board>
 
