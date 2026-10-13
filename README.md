@@ -4,7 +4,7 @@ not resolve until a project fills them in.
 
 [Every repo starts planned and this README grows with it. Fill the brackets,
 keep the section order, delete this line and the Template note above. Sections marked "planned" go when
-the board reaches alpha: by then the technical write-up and the renders
+the board reaches alpha: by then AGENTS.md carries the design and the renders
 and the shop badge take their place. Replace `images/front.png` and
 `images/back.png` with the board renders.]
 
@@ -52,6 +52,9 @@ board does.]
 | spec | spec |
 | spec | spec |
 | spec | spec |
+
+[From alpha on:]
+Technical write-up, part list and layout constraints: [AGENTS.md](AGENTS.md).
 
 ## Constraints
 
