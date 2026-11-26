@@ -8,11 +8,19 @@
      grows past a screen, the detail belongs in the schematic, not here. State
      current fact only. No plans, no TODOs, no history outside Revisions.
 
-     Shared rules live once, in "Board rules" at the end of this file. A board
-     repository deletes that section and keeps the one-line link in Rules,
-     adding only what differs for that board. A mechanical or
-     documentation-only repository (frame, motor, no .kicad_pro) starts from
-     the mechanical-repository template in the hardware-tooling repository. -->
+     Shared rules live in "Board rules" at the end of this file. Every board
+     repository carries a byte-identical copy of that section, so it works
+     standalone; its .github/workflows/agents-rules.yml checks the copy against
+     this file. Edit the section here, then copy it into the boards with
+     agents_section_sync.py --section "Board rules" from the hardware-tooling
+     repository. A board's own sections hold only what differs for that board
+     and do not repeat the copy.
+
+     KiCad boards only: Board rules assumes KiCad. A mechanical or
+     documentation-only repository (frame, motor, no .kicad_pro) does not carry
+     it: it starts from the mechanical-repository template in the
+     hardware-tooling repository, and the sync tool lists it as excluded and
+     flags a stray Board rules section there. -->
 
 # <Board>
 
@@ -69,11 +77,12 @@ upstream. Do not restate upstream documentation.>
 | Board | `hardware/<name>.kicad_pcb`, <N> layers, <thickness> |
 | Design rules | `hardware/<name>.kicad_dru`, canonical block plus <board-specific rules, or none> |
 
-<!-- Add a row only where the board differs from "Board rules", Files. -->
+<!-- Add a row only where the board differs from "Board rules", Files.
+     Mechanical repos: replace the KiCad rows with the CAD tool. -->
 
 ## Rules
 
-The shared [Board rules](https://github.com/OpenDrone-hw/hardware-template/blob/main/AGENTS.md#board-rules) apply. Only what differs for this board is listed here.
+The [Board rules](#board-rules) at the end of this file apply, a CI-checked copy of the [hardware-template](https://github.com/OpenDrone-hw/hardware-template/blob/main/AGENTS.md#board-rules) section. Only what differs for this board is listed here.
 
 ## Revisions
 
@@ -83,9 +92,9 @@ The shared [Board rules](https://github.com/OpenDrone-hw/hardware-template/blob/
 
 ## Board rules
 
-<!-- Template only: a board repository deletes this section. -->
-
-Shared by every OpenDrone KiCad board repository. Edit them here, never in a board.
+Shared by every OpenDrone KiCad board repository, byte for byte, and checked
+in CI against [hardware-template](https://github.com/OpenDrone-hw/hardware-template/blob/main/AGENTS.md#board-rules).
+Edit them there, never in a board.
 
 ### Files
 
