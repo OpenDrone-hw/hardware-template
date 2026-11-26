@@ -4,9 +4,9 @@
 
      Keep the section order identical in every OpenDrone repo, so a reader and an
      agent find the same thing in the same place anywhere. Delete a section that
-     does not apply rather than leaving it empty. Target 150 lines: if a section
-     grows past a screen, the detail belongs in the schematic, not here. State
-     current fact only. No plans, no TODOs, no history outside Revisions.
+     does not apply rather than leaving it empty. If a section grows past a
+     screen, the detail belongs in the schematic, not here. Never drop a board
+     fact only to make the file shorter. State current fact only. No plans, no TODOs, no history outside Revisions.
 
      Shared rules live in "Board rules" at the end of this file. Every board
      repository carries a byte-identical copy of that section, so it works
@@ -14,7 +14,8 @@
      this file. Edit the section here, then copy it into the boards with
      agents_section_sync.py --section "Board rules" from the hardware-tooling
      repository. A board's own sections hold only what differs for that board
-     and do not repeat the copy.
+     and do not repeat the copy, with one exception: Environment and By task
+     give the commands with the board's real file names, ready to paste.
 
      KiCad boards only: Board rules assumes KiCad. A mechanical or
      documentation-only repository (frame, motor, no .kicad_pro) does not carry
@@ -80,6 +81,21 @@ upstream. Do not restate upstream documentation.>
 <!-- Add a row only where the board differs from "Board rules", Files.
      Mechanical repos: replace the KiCad rows with the CAD tool. -->
 
+## Environment
+
+```sh
+# schematic and board checks
+kicad-cli sch erc hardware/<name>.kicad_sch
+kicad-cli pcb drc --schematic-parity --refill-zones hardware/<name>.kicad_pcb
+
+# netlist, for scripted analysis
+kicad-cli sch export netlist --format kicadsexpr -o /tmp/<name>.net hardware/<name>.kicad_sch
+```
+
+<Replace `<name>` with the real file names. Then the scripts in
+`hardware/tools/`, one line each on what they do; delete this note if the board
+has none.>
+
 ## Rules
 
 The [Board rules](#board-rules) at the end of this file apply, a CI-checked copy of the [hardware-template](https://github.com/OpenDrone-hw/hardware-template/blob/main/AGENTS.md#board-rules) section. Only what differs for this board is listed here.
@@ -89,6 +105,13 @@ The [Board rules](#board-rules) at the end of this file apply, a CI-checked copy
 | Rev | Date | Change |
 |---|---|---|
 | <rev1> | <YYYY-MM-DD> | First release. |
+
+## By task
+
+- Render the board for the README: `$KPY <hardware-tooling>/hardware/kicad/render_board.py hardware/<name>.kicad_pcb --outdir images`, KiCad closed.
+
+<Replace `<name>` with the real file name and add the tasks only this board
+has. Tasks that are the same on every board are in Board rules, By task.>
 
 ## Board rules
 
